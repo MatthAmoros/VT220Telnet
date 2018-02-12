@@ -122,6 +122,7 @@ namespace VT220Telnet
         /// For VT220 emulator
         /// </summary>
         private static string VT220_CLEAN_CONSOLE = (char)0x1B + "[2J";
+        private static string VT220_HOME_POSITION = (char)0x1B + "[H";
 
         /// <summary>
         /// Handle communication with a TcpClient
@@ -263,6 +264,7 @@ namespace VT220Telnet
                 SendText(client, stream, ">> OK !" + Environment.NewLine);
                 GetInput(client, stream);
                 SendText(client, stream, VT220_CLEAN_CONSOLE);
+		SendText(client, stream, VT220_HOME_POSITION);
             }
         }
 
